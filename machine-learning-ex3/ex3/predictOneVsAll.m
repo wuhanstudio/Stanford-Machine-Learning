@@ -30,7 +30,9 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
-
+z = X * all_theta';
+h = 1 ./ (1+exp(-z));
+[w,p] = max(h,[],2);
 
 
 

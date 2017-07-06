@@ -35,8 +35,16 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
+temp = theta;
+temp(1) = 0;
 
+z = X * theta;
 
+h = 1 ./ (1 + exp(-z));
+
+J = 1 / m * (-y'*log(h)-(1-y)'*log(1-h)) + lambda/2/m*sum(temp.^2);
+
+grad = 1 / m * ((h-y)'*X) + lambda/m*temp';
 
 
 
